@@ -63,8 +63,7 @@ function checkRepeatClock() {
 // 获取学生信息
 function getStudentInfo() {
   const options = {
-    url:
-      "https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/home/searchPeople/peopleList",
+    url: "https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/home/searchPeople/peopleList",
     method: "GET",
     params: {
       stu: secret_keys.student_num
@@ -145,6 +144,10 @@ function clockIn() {
     return;
   }
   const time = new Date();
+
+  //生成从10到99的随机数，用于每天小幅改变经纬度
+  const random = (min,max) => { return parseInt(Math.random()*(max-min+1)+min,10)};
+
   const key = {
     openid: secret_keys.openid.replace(/[\r\n]/g, ""),
     name: secret_keys.name,
@@ -152,8 +155,8 @@ function clockIn() {
     xb: secret_keys.sex,
     locationBig: secret_keys.locationBig,
     locationSmall: secret_keys.locationSmall,
-    latitude: secret_keys.lat,
-    longitude: secret_keys.lng,
+    latitude: secret_keys.lat.slice(0,-2)+random(10,99).toString(),
+    longitude: secret_keys.lng.slice(0,-2)+random(10,99).toString(),
     szdq: secret_keys.addressBig,
     xxdz: secret_keys.address,
 
@@ -180,8 +183,7 @@ function clockIn() {
     url: "https://we.cqu.pt/api/mrdk/post_mrdk_info.php",
     method: "POST",
     headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Linux; Android 10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.62 XWEB/2693 MMWEBSDK/201001 Mobile Safari/537.36 MMWEBID/7311 MicroMessenger/7.0.20.1781(0x27001439) Process/appbrand2 WeChat/arm64 NetType/4G Language/zh_CN ABI/arm64",
+      "User-Agent": "Mozilla/5.0 (Linux; Android 10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.62 XWEB/2693 MMWEBSDK/201001 Mobile Safari/537.36 MMWEBID/7311 MicroMessenger/7.0.20.1781(0x27001439) Process/appbrand2 WeChat/arm64 NetType/4G Language/zh_CN ABI/arm64",
       Referer: "https://servicewechat.com/wx8227f55dc4490f45/76/page-frame.html"
     },
     data: {
