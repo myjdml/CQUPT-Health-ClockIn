@@ -177,7 +177,6 @@ function clockIn() {
     mrdkkey: getMrdkKey(time.getDate(), time.getHours())
   };
 
-  console.log(key)
   const key_base64 = new Buffer.from(JSON.stringify(key)).toString("base64");
 
   const options = {
