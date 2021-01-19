@@ -155,8 +155,8 @@ function clockIn() {
     xb: secret_keys.sex,
     locationBig: secret_keys.locationBig,
     locationSmall: secret_keys.locationSmall,
-    latitude: secret_keys.lat.slice(0,-2)+random(10,99).toString(),
-    longitude: secret_keys.lng.slice(0,-2)+random(10,99).toString(),
+    latitude: secret_keys.lat.toString().slice(0,-2)+random(10,99).toString(),
+    longitude: secret_keys.lng.toString().slice(0,-2)+random(10,99).toString(),
     szdq: secret_keys.addressBig,
     xxdz: secret_keys.address,
 
@@ -177,6 +177,7 @@ function clockIn() {
     mrdkkey: getMrdkKey(time.getDate(), time.getHours())
   };
 
+  console.log(key)
   const key_base64 = new Buffer.from(JSON.stringify(key)).toString("base64");
 
   const options = {
