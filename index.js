@@ -54,7 +54,7 @@ function checkRepeatClock() {
         return;
       }
     })
-    .catch(err => {
+    .catch(() => {
       console.log("1、检测重复打卡失败");
       return;
     });
@@ -201,7 +201,7 @@ function clockIn() {
         sendNotification("自动健康打卡失败，请手动打卡");
       }
     })
-    .catch(err => {
+    .catch(() => {
       console.log("4、打卡失败");
       sendNotification("自动健康打卡失败，请手动打卡");
     });
@@ -232,7 +232,7 @@ function sendNotification(text) {
         console.log("5、发送通知失败：" + res.data.errmsg);
       }
     })
-    .catch(err => {
+    .catch(() => {
       console.log("5、发送通知失败");
     });
 }
