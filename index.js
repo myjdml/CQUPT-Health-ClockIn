@@ -53,7 +53,10 @@ function checkRepeatClock() {
     method: "POST",
     data: {
       key: key_base64
-    }
+    },
+    retry: 5, // 重试次数
+    timeout: 10000, // 超时时间
+    retryDelay: 1000 // 间隔时间
   };
   ax(options)
     .then(res => {
@@ -85,7 +88,10 @@ function getStudentInfo() {
     method: "GET",
     params: {
       stu: secret_keys.student_num
-    }
+    },
+    retry: 5,
+    timeout: 10000,
+    retryDelay: 1000
   };
   ax(options)
     .then(res => {
@@ -123,7 +129,10 @@ function getLocation() {
     params: {
       address: secret_keys.address,
       key: "PULBZ-BSEWU-MAEVV-2IAJR-ZCAS3-53F4O"
-    }
+    },
+    retry: 5,
+    timeout: 10000,
+    retryDelay: 1000
   };
   ax(options)
     .then(res => {
@@ -207,9 +216,9 @@ function clockIn() {
     data: {
       key: key_base64
     },
-    retry: 5, // 重试次数
-    timeout: 10000, // 超时时间
-    retryDelay: 1000, // 间隔时间
+    retry: 5,
+    timeout: 10000,
+    retryDelay: 1000
   };
 
   ax(options)
@@ -241,7 +250,10 @@ function sendNotification(text) {
     method: "GET",
     params: {
       text: text
-    }
+    },
+    retry: 5,
+    timeout: 10000,
+    retryDelay: 1000
   };
 
   ax(options)
