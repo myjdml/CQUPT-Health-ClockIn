@@ -207,10 +207,9 @@ function clockIn() {
     data: {
       key: key_base64
     },
-    // 超时重试
-    retry: 3,
-    timeout: 10000,
-    retryDelay: 1000,
+    retry: 5, // 重试次数
+    timeout: 10000, // 超时时间
+    retryDelay: 1000, // 间隔时间
   };
 
   ax(options)
