@@ -5,6 +5,24 @@
 const ax = require("axios");
 const { getMrdkKey } = require("./mrdkkey.js");
 
+// 超时重试
+ax.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+  const config = err.config;
+  if(!config || !config.retry) return Promise.reject(err);
+  config.__retryCount = config.__retryCount || 0;
+  if(config.__retryCount >= config.retry) {
+    return Promise.reject(err);
+  }
+  config.__retryCount += 1;
+  const backoff = new Promise(function(resolve) {
+    setTimeout(function() {
+      resolve();
+    }, config.retryDelay || 1);
+  });
+  return backoff.then(() => ax(config));
+});
+
+
 // Server酱推送 KEY
 const push_key = process.env.PUSH_KEY;
 
@@ -188,7 +206,11 @@ function clockIn() {
     },
     data: {
       key: key_base64
-    }
+    },
+    // 超时重试
+    retry: 3,
+    timeout: 10000,
+    retryDelay: 1000,
   };
 
   ax(options)
