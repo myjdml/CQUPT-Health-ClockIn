@@ -14,6 +14,7 @@ on:
     
 env:
   PUSH_KEY: ${{ secrets.PUSH_KEY }}
+  PUSH_KEY_QQ: ${{ secrets.PUSH_KEY_QQ }}
   OPEN_ID: ${{ secrets.OPEN_ID }}
   STUDENT_NUM: ${{ secrets.STUDENT_NUM }}
   ADDRESS: ${{ secrets.ADDRESS }}
