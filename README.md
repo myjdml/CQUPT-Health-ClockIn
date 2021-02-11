@@ -53,8 +53,7 @@
   - PUSH_KEY：本脚本通过 [Sever 酱](http://sc.ftqq.com/) 来实现推送打卡信息到微信。如果你需要开启这个服务，就按照网站首页提示即可，你会获得一个 KEY，你需要填入 PUSH_KEY 中。如果你不需要该推送，则可以不填。 
   - PUSH_KEY_QQ：本脚本通过 [Qmsg 酱](https://qmsg.zendee.cn/) 来实现推送打卡信息到 QQ。如果你需要开启这个服务，就按照网站首页提示即可，你会获得一个 KEY，你需要填入 PUSH_KEY_QQ 中。如果你不需要该推送，则可以不填。
 ![](./img/3.png)
-3. 修改脚本执行时间，修改 `CQUPT_Health_ClockIn/.github/workflows/work.yaml`，可以将仓库 Clone 到本地，也可以在线修改。
-  - 定时执行一般会延迟半小时到一个小时，没办法，免费版要排队。
+3. 修改脚本执行时间，修改 `CQUPT_Health_ClockIn/.github/workflows/work.yaml`，可以将仓库 Clone 到本地，也可以在线修改。定时执行一般会延迟半小时到一个小时，没办法，免费版要排队。
 4. 运行结果  
 ![](./img/4.jpg)
 ![](./img/5.jpg)
